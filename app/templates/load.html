@@ -1,0 +1,10 @@
+{% extends "template.html" %}
+{% block sayfa_basligi %}Analiz ediliyor..{% endblock sayfa_basligi %}
+{% block icerik %}
+<div class="loader">
+    <p>Analiz yapılıyor, bu yaklaşık 1 dakika kadar sürebilir<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span></p>
+    <div id="spin"></div>
+</div>
+{% endblock icerik %}
+{% block js %}<script src="{{ url_for('static', path='/script/script.js') }}"></script>
+{% endblock js %}

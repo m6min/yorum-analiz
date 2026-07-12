@@ -1,0 +1,20 @@
+{% extends "template.html" %}
+{% block sayfa_basligi %}Ana Sayfa{% endblock sayfa_basligi %}
+{% block icerik %}
+<div class="center_grid">
+    <h1>Hoşgeldiniz. Ürününüzün bulunduğu platformu seçmeden önce önerileri okuyun.</h1>
+    <details>
+        <summary>Öneriler / Nasıl Kullanılır</summary>
+        <ul id="oneriler">
+            <li>-Aracı her kullandığınızda ürününüze yapılan yorumların kaydedildiğini unutmayın.</li>
+            <li>-20 yorumdan az yoruma sahip ürünler analiz edilememektedir.</li>
+            <li>-Aktif olarak maksimum 500 yorum seçilip analiz edilir.</li>
+            <li>-Araca yorum linki veya satıcı linki yapıştırmanız hata almanıza neden olacaktır. 
+                Ürününüzün müşterilerinize gözüken sayfa linkini başındaki https ile ekleyin.</li>
+        </ul>
+    </details>
+    <a href="{{ url_for('platform', platform_adi='trendyol') }}">
+        <button type="button" class="donus_butonu">Trendyol Yorum Analiz Sayfasına Git</button>
+    </a>
+</div>
+{% endblock icerik %}

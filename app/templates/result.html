@@ -1,0 +1,132 @@
+{% extends "template.html" %}
+{% block sayfa_basligi %}Analiz Sonuçları{% endblock sayfa_basligi %}
+{% block icerik %}
+<div class="result-grid">
+    <div class="score sonucbox" id="scoreBox"><p>Yorumların ortalama pozitivite puanı:</p>
+        {% set puan = result["pozitif_oran"] | float %}
+        <h2 class="
+        {% if puan >= 7.0 %} skor-yesil
+        {% elif puan >= 5.0 %} skor-sari
+        {% else %} skor-kirmizi
+        {% endif %}
+    ">{{ result["pozitif_oran"] }}</h2></div>
+    <div class="ozellikler sonucbox"><p>Sevilen özellikler: </p>
+        <ul>
+            {% for ovulen in result["ovulen_ozellikler"] %}
+        <li>{{ loop.index }}- {{ ovulen }}</li>
+            {% endfor %}
+        </ul>
+        <hr>
+        <p>Şikayet edilen özellikler: </p>
+        <ul>
+            {% for sikayet in result["sikayetler"] %}
+        <li>{{ loop.index }}- {{ sikayet }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div id="yorumGrafigi" style="width: 100%; height: 400px;"></div>
+{% endblock icerik %}
+{% block js %}
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const islemId = "{{ islem_id }}"; 
+        // JSON endpoint'ine fetch
+        fetch(`/api/grafik/${islemId}`)
+            .then(response => response.json())
+            .then(veri => {
+                // grafiğin düzleşmesi için tarihleri sıralar
+                const siraliVeri = veri.data.sort((a, b) => new Date(a.x) - new Date(b.x));
+                var ayarlar = {
+                    theme: {
+                        mode: 'dark' 
+                    },
+                    series: [{
+                        name: 'Yorum Puanı',
+                        data: siraliVeri
+                    }],
+                    chart: {
+                        type: 'scatter',// area ?
+                        height: 350,
+                        foreColor: '#516c4f',
+                        background: 'transparent',
+                        toolbar: {
+                            show: false
+                        }
+                    },
+                    colors: ['#70e382'],
+                    dataLabels: {
+                        enabled: false
+                    },
+                    stroke: {
+                        curve: 'smooth',
+                        width: 2
+                    },
+                    title: {
+                        text: 'Zaman İçinde Yorum Skorlarına Göre Müşteri Memnuniyeti Eğilimi',
+                        align: 'center'
+                    },
+                    xaxis: {
+                        type: 'datetime',
+                        title: {
+                            text: 'Yorum Tarihi'
+                        }
+                    },
+                    yaxis: {
+                        min: 0,
+                        max: 10,
+                        title: {
+                            text: 'AI Yorum Puanı (0-10)'
+                        }
+                    }
+                };
+
+                var grafik = new ApexCharts(document.querySelector("#yorumGrafigi"), ayarlar);
+                grafik.render();
+            })
+            .catch(err => {
+                console.error("Grafik verisi çekilirken hata oluştu:", err);
+                document.querySelector("#yorumGrafigi").innerHTML = "<p style='color:red;'>Grafik yüklenemedi.</p>";
+            });
+    });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const box = document.getElementById('scoreBox');
+  if (!box) return;
+
+  const colors = ['#ff5f6d', '#ffc371', '#4ade80', '#38bdf8', '#c084fc', '#f472b6'];
+
+  function randomBetween(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  function createParticle() {
+    const p = document.createElement('div');
+    p.className = 'confetti-particle';
+
+    const maxDistX = box.offsetWidth / 2.2;
+    const maxDistY = box.offsetHeight / 2.2;
+
+    const distX = randomBetween(-maxDistX, maxDistX);
+    const distY = randomBetween(-maxDistY, maxDistY);
+
+    p.style.setProperty('--color', colors[Math.floor(Math.random() * colors.length)]);
+    p.style.setProperty('--size', randomBetween(4, 9) + 'px');
+    p.style.setProperty('--rot', randomBetween(0, 360) + 'deg');
+    p.style.setProperty('--dist', distX + 'px');
+    p.style.setProperty('--fall', distY + 'px');
+    p.style.setProperty('--dur', randomBetween(0.6, 1.1) + 's');
+    p.style.setProperty('--delay', randomBetween(0, 0.2) + 's');
+    p.style.setProperty('--shape', Math.random() > 0.5 ? '50%' : '2px');
+
+    box.appendChild(p);
+  }
+
+  const count = 50;
+  for (let i = 0; i < count; i++) {
+    createParticle();
+  }
+});
+</script>
+{% endblock js %}

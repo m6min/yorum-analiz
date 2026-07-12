@@ -1,0 +1,9 @@
+{% extends "template.html" %}
+{% block sayfa_basligi %}404 | Sayfa Bulunamadı{% endblock sayfa_basligi %}
+{% block icerik %}
+<div class="center_grid">
+    <h2 class="error_mesaj">Oops.. Galiba rotanı kaybettin.</h2>
+    <p class="detail">404: Bu sayfa silinmiş veya taşınmış olabilir.</p>
+    <a class="donus_butonu" href="{{ url_for('ana_sayfa') }}">Ana Sayfa</a>
+</div>
+{% endblock icerik %}

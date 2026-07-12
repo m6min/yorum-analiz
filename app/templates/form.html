@@ -1,0 +1,17 @@
+{% extends "template.html" %}
+    {% block sayfa_basligi %}Yorum Analiz{% endblock sayfa_basligi %}
+{% block icerik %}
+<div class="center_grid">
+    <h1>{{ secilen_platform.capitalize() }} ürününüzün satış linkini girin:</h1>
+    <!--<p class="warning">Uyarı: Linkin başında "https://" olmalı.</p>-->
+    <form class="urun_form" method="POST" action="/analiz/{{ secilen_platform }}" autocomplete="off">
+        <input 
+            type="url" 
+            class="form_input" name="urun_linki"
+            placeholder="{% if secilen_platform == 'hepsiburada' %}https://www.hepsiburada.com/samsung-galaxy-s25-ultra{% else %}https://www.trendyol.com/apple/iphone-17-256gb{% endif %}"
+            required
+        >
+        <button type="submit" class="form_button">Analiz Et</button>
+    </form>
+</div>
+{% endblock icerik %}

@@ -1,0 +1,10 @@
+{% extends "template.html" %}
+{% block sayfa_basligi %}Hata | {{ hata_kodu }}{% endblock sayfa_basligi %}
+{% block icerik %}
+<div class="center_grid">
+    <h2 class="error_mesaj">{{ hata_kodu }}</h2>
+    <p class="detail">Bir hata oluştu ve loglara kaydedildi. Sorun devam ederse bize bir bildirim bırakmaktan çekinmeyin.</p>
+    {% if hata_mesaji %}<p class="detail">Hata: {{ hata_mesaji }}</p>{% endif %}
+    <a class="donus_butonu" href="{{ url_for('ana_sayfa') }}">Ana Sayfa</a>
+</div>
+{% endblock icerik %}

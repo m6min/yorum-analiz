@@ -1,0 +1,66 @@
+
+2026-07-09 22:48:38,873 - ERROR - Hata 404: Not Found - Path: /favicon.ico
+2026-07-09 23:05:56,077 - ERROR - Hata 405: Method Not Allowed - Path: /analiz/hepsiburada
+2026-07-10 00:11:39,541 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-10 00:12:21,430 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-10 00:47:05,431 - ERROR - Hata 404: p þuan için desteklenmiyor. - Path: /platform/p
+2026-07-10 00:48:50,062 - ERROR - Hata 404: Not Found - Path: /favicon.ico
+2026-07-10 23:21:08,201 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-10 23:21:39,069 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-10 23:37:50,892 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-10 23:52:18,328 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-10 23:52:18,835 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-07-11 00:02:14,984 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-11 13:08:03,438 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-11 13:08:31,751 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-11 13:11:45,508 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-11 13:17:26,085 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1602' coro=<Connection.run() done, defined at C:\Users\mumin\Repos\gizli\work\yoranaliz\venv\Lib\site-packages\playwright\_impl\_connection.py:305> exception=NotImplementedError()>
+Traceback (most recent call last):
+  File "C:\Users\mumin\Repos\gizli\work\yoranaliz\venv\Lib\site-packages\playwright\_impl\_connection.py", line 312, in run
+    await self._transport.connect()
+  File "C:\Users\mumin\Repos\gizli\work\yoranaliz\venv\Lib\site-packages\playwright\_impl\_transport.py", line 133, in connect
+    raise exc
+  File "C:\Users\mumin\Repos\gizli\work\yoranaliz\venv\Lib\site-packages\playwright\_impl\_transport.py", line 120, in connect
+    self._proc = await asyncio.create_subprocess_exec(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<9 lines>...
+    )
+    ^
+  File "C:\Users\mumin\AppData\Local\Programs\Python\Python313\Lib\asyncio\subprocess.py", line 224, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        stderr=stderr, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mumin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 1794, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\mumin\AppData\Local\Programs\Python\Python313\Lib\asyncio\base_events.py", line 539, in _make_subprocess_transport
+    raise NotImplementedError
+NotImplementedError
+2026-07-11 13:24:39,982 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-11 13:24:40,617 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 404 Not Found"
+2026-07-11 13:59:24,043 - INFO - AFC is enabled with max remote calls: 10.
+2026-07-11 13:59:24,334 - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent "HTTP/1.1 429 Too Many Requests"
+2026-07-11 14:27:02,923 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-07-11 14:32:08,821 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 400 Bad Request"
+2026-07-11 14:38:35,432 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-11 14:46:47,900 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-12 12:03:53,219 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-12 12:06:12,102 - ERROR - Hata 404: trendyol þuan için desteklenmiyor. - Path: /platform/trendyol
+2026-07-12 12:09:24,274 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-12 18:11:05,304 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-12 18:16:57,539 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-12 18:18:25,840 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-12 18:20:53,644 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-12 18:33:24,865 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
+2026-07-12 18:49:14,648 - ERROR - Validasyon hatasý - Path: /analiz/trendyol - Detay: [{'type': 'string_pattern_mismatch', 'loc': ('body', 'urun_linki'), 'msg': "String should match pattern '^https://[a-zA-Z0-9.-]+\\.com/[a-zA-Z0-9/_&+=?#.-]+$'", 'input': 'http://trendyol.com/hahah-akf', 'ctx': {'pattern': '^https://[a-zA-Z0-9.-]+\\.com/[a-zA-Z0-9/_&+=?#.-]+$'}}]
+2026-07-12 19:43:35,535 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-12 19:46:56,754 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-12 19:51:10,660 - INFO - HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+2026-07-12 20:15:48,556 - ERROR - Hata 404: Not Found - Path: /.well-known/appspecific/com.chrome.devtools.json
