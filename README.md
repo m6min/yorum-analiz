@@ -4,6 +4,8 @@ A web application that turns Trendyol product reviews into a customer-feedback r
 
 The application collects product reviews, calculates a sentiment score, identifies commonly praised features and reported issues, and displays review-score trends over time.
 
+[See and test live demo](https://yorum-analiz.onrender.com/)
+
 ## Features
 
 - Trendyol product review collection with Playwright
