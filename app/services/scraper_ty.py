@@ -15,7 +15,8 @@ class Trendyol:
         async with async_playwright() as p:
             tarayici = None
             try:
-                tarayici = await p.chromium.launch(headless=True, slow_mo=500, args=["--disable-blink-features=AutomationControlled"])
+                tarayici = await p.chromium.launch(headless=True, slow_mo=500,
+                                                args=["--disable-blink-features=AutomationControlled"], proxy={"server": "https://95.3.69.222:8080"})
                 sekme = await Trendyol.tum_yorumlara_git(tarayici, url)
 
                 yorumlar = await Trendyol.yorumlari_al(sekme)
