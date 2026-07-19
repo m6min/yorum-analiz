@@ -8,6 +8,8 @@ from playwright.async_api import Page
 ORTAK_CONTEXT_SECENEKLERI = {
     # context'e eşitlenecek ortak config
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
     "locale": "tr-TR",
     "viewport": {"width": 1920, "height": 1080},
     "timezone_id": "Europe/Istanbul",
