@@ -13,6 +13,7 @@ class Trendyol:
         Hatalar mock_model içinde exception ile yakalanmalı.
         """
         async with async_playwright() as p:
+            tarayici = None
             try:
                 tarayici = await p.chromium.launch(headless=True, slow_mo=500, args=["--disable-blink-features=AutomationControlled"])
                 sekme = await Trendyol.tum_yorumlara_git(tarayici, url)
@@ -21,7 +22,8 @@ class Trendyol:
             except Exception as e:
                 raise ScrapeError(f"Yorumları alma başarısız oldu: {e}")
             finally:
-                await tarayici.close()
+                if tarayici:
+                    await tarayici.close()
         return yorumlar
 
 
