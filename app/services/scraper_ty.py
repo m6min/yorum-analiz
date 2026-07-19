@@ -48,6 +48,7 @@ class Trendyol:
 
         await Scraper.asagi_kaydir(sekme=sekme)
 
+        await sekme.screenshot(path="ss.png", full_page=True)
         buton = sekme.locator('[data-testid="show-more-button"]').first
         await buton.wait_for(state="attached", timeout=50000)
         await buton.click(force=True)
