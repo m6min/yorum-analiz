@@ -36,7 +36,7 @@ class Trendyol:
         )
         sekme = await context.new_page()
         # Belleği hızlandırmak için tracking ve resim engellemesi
-        #await sekme.route("**/*", Scraper.engelle)
+        await sekme.route("**/*", Scraper.engelle)
         await sekme.goto(url, timeout=30000)
         await Scraper.rastgele_bekle(0.2, 1.0)
 
@@ -47,9 +47,12 @@ class Trendyol:
             await Scraper.rastgele_bekle()
 
         await Scraper.asagi_kaydir(sekme=sekme)
-        await sekme.locator("span").get_by_text("TÜM YORUMLARI GÖSTER", exact=True).last.click()
+
+        buton = sekme.locator('[data-testid="show-more-button"]').first
+        await buton.wait_for(state="attached", timeout=50000)
+        await buton.click(force=True)
         await Scraper.rastgele_bekle(0.3, 1.2)
-        # Tum yorumlar sekmesine geçildi, sekmeyi return et
+
         return sekme
 
     @staticmethod
