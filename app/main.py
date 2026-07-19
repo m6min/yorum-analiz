@@ -54,8 +54,8 @@ async def hatalari_uret(request: Request, exc: StarletteHTTPException | RequestV
 @app.get("/fotograf")
 async def fotograf_getir():
     # Eğer fotoğraf varsa ekranda göster
-    if os.path.exists("render_ne_goruyor.png"):
-        return FileResponse("render_ne_goruyor.png")
+    if os.path.exists("ss.png"):
+        return FileResponse("ss.png")
     return {"mesaj": "Henüz fotoğraf çekilmedi"}
 
 @app.exception_handler(RateLimitExceeded)
