@@ -4,7 +4,10 @@ A web application that turns Trendyol product reviews into a customer-feedback r
 
 The application collects product reviews, calculates a sentiment score, identifies commonly praised features and reported issues, and displays review-score trends over time.
 
-[See and test live demo](https://yorum-analiz.onrender.com/)
+> **Important Note on Deployment & Cloud Environments:**
+> This project is intentionally designed to be run in a local environment. Due to aggressive IP-based geolocation blocks and bot-protection mechanisms (e.g., Cloudflare, PerimeterX) employed by major e-commerce platforms like Trendyol, running headless scraping automation (Playwright) on generic cloud instances (like Render or AWS Europe) results in forced geographic redirects or captchas. Therefore, a live cloud demo is not maintained. To experience the full capabilities of the application, please follow the Installation guide to run it locally.
+
+
 
 ## Features
 
@@ -47,7 +50,7 @@ flowchart LR
 ## Technology Stack
 
 | Area | Technologies |
-| --- | --- |
+|---|---|
 | Backend | FastAPI, Uvicorn |
 | Frontend | Jinja2, HTML, CSS, JavaScript |
 | Web automation | Playwright |
@@ -56,7 +59,6 @@ flowchart LR
 | LLM analysis | Groq, Llama 3.3 70B Versatile |
 | Charts | ApexCharts |
 | Rate limiting | SlowAPI |
-| Container support | Docker |
 
 ## Supported Platform
 
@@ -68,13 +70,15 @@ The platform layer is structured so that additional e-commerce platforms can be 
 
 ## Requirements
 
+To run this project locally, you will need:
+
 - Python 3.10 or newer
-- MongoDB database or MongoDB Atlas cluster
+- MongoDB database (Local instance or MongoDB Atlas cluster)
 - Groq API key
 - Chromium browser installed through Playwright
-- Internet access for Trendyol, MongoDB, and Groq
+- Stable internet connection (A clean, non-datacenter IP is recommended for scraping)
 
-## Installation
+## Installation & Local Setup
 
 Clone the repository and move into the application directory:
 
@@ -103,11 +107,10 @@ Install dependencies:
 
 ```bash
 pip install -r requirements.txt
-pip install scikit-learn pandas
 playwright install chromium
 ```
 
-Create an `.env` file inside the `app` directory:
+Create an `.env` file inside the app directory:
 
 ```env
 MONGO_URL="your-mongodb-connection-string"
@@ -122,13 +125,13 @@ uvicorn main:app --reload
 
 Open the application in your browser:
 
-```text
+```
 http://127.0.0.1:8000
 ```
 
 ## Usage
 
-1. Open the home page.
+1. Open the home page ([http://127.0.0.1:8000](http://127.0.0.1:8000)).
 2. Select Trendyol.
 3. Paste a valid public product URL.
 4. Submit the form and wait for the analysis to finish.
@@ -138,13 +141,13 @@ http://127.0.0.1:8000
 
 The project includes a trained model at:
 
-```text
+```
 app/model/model.joblib
 ```
 
 The model uses a scikit-learn pipeline:
 
-```text
+```
 TF-IDF Vectorizer (maximum 10,000 features)
         ↓
 Logistic Regression classifier
@@ -160,9 +163,9 @@ The training dataset must:
 
 - Be named `data.csv`
 - Use UTF-8 encoding
-- Use semicolons as separators
+- Use semicolons as separators, you can change it on "train.py , line: 19" if you want
 - Include `Metin` and `Durum` columns
-- Use `2` for neutral examples, which are i EXCLUDED during training
+- Use `2` for neutral examples, which are EXCLUDED during training
 
 Place the dataset in `app/model`, then run:
 
@@ -178,7 +181,7 @@ The script reports test accuracy and saves the trained model as `model.joblib`.
 MongoDB stores three main collections:
 
 | Collection | Purpose |
-| --- | --- |
+|---|---|
 | `yorumlar` | Individual collected reviews, dates, and sentiment scores |
 | `analiz_sonuclari` | Final analysis reports and creation dates |
 | `islem_durumlari` | Analysis task state and product URL |
@@ -186,15 +189,15 @@ MongoDB stores three main collections:
 Task states:
 
 | State | Meaning |
-| --- | --- |
-| `-1` | Failed or not found |
-| `0` | Processing |
-| `1` | Completed |
+|---|---|
+| -1 | Failed or not found |
+| 0 | Processing |
+| 1 | Completed |
 
 ## Application Routes
 
 | Route | Description |
-| --- | --- |
+|---|---|
 | `/` | Home page |
 | `/platform/trendyol` | Trendyol URL submission page |
 | `POST /analiz/trendyol` | Starts an analysis request |
@@ -214,7 +217,7 @@ Task states:
 
 ## Project Structure
 
-```text
+```
 app/
 ├── api/
 │   └── v1/
@@ -245,8 +248,4 @@ app/
 
 ## Responsible Use
 
-This project collects publicly visible e-commerce reviews for analysis purposes.
-
 Website structures, policies, and access rules may change over time. Before deploying or using this project at scale, review the relevant platform terms of service, privacy requirements, and applicable laws.
-
-The generated sentiment scores and summaries are intended to support product-feedback analysis. They should not be treated as the only basis for business decisions.
