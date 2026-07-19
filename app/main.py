@@ -1,7 +1,9 @@
 import asyncio
 import logging
 import sys
+import os
 
+from fastapi.responses import FileResponse
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.staticfiles import StaticFiles
@@ -48,6 +50,13 @@ async def hatalari_uret(request: Request, exc: StarletteHTTPException | RequestV
     return templates.TemplateResponse(request=request, name="error.html",
                                     context={ "hata_kodu": exc.status_code,
                                             "hata_mesaji": exc.detail}, status_code=exc.status_code)
+
+@app.get("/fotograf")
+async def fotograf_getir():
+    # Eğer fotoğraf varsa ekranda göster
+    if os.path.exists("render_ne_goruyor.png"):
+        return FileResponse("render_ne_goruyor.png")
+    return {"mesaj": "Henüz fotoğraf çekilmedi"}
 
 @app.exception_handler(RateLimitExceeded)
 async def rate_limit_yakalayici(request: Request, exc: Exception):
