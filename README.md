@@ -5,7 +5,7 @@ A web application that turns Trendyol product reviews into a customer-feedback r
 The application collects product reviews, calculates a sentiment score, identifies commonly praised features and reported issues, and displays review-score trends over time.
 
 > **Important Note on Deployment & Cloud Environments:**
-> This project is intentionally designed to be run in a local environment. Due to aggressive IP-based geolocation blocks and bot-protection mechanisms (e.g., Cloudflare, PerimeterX) employed by major e-commerce platforms like Trendyol, running headless scraping automation (Playwright) on generic cloud instances (like Render or AWS Europe) results in forced geographic redirects or captchas. Therefore, a live cloud demo is not maintained. To experience the full capabilities of the application, please follow the Installation guide to run it locally.
+> This project is intentionally designed to be run in a local environment. Due to aggressive IP-based geolocation blocks and bot-protection mechanisms (e.g., Cloudflare, PerimeterX) employed by major e-commerce platforms like Trendyol, running headless scraping automation (Playwright) on generic cloud instances (like Render or AWS Europe) results in forced geographic redirects or captchas. Therefore, a live cloud demo is not maintained. To experience the full capabilities of the application, please follow the Installation guide in the blow to run it locally.
 
 
 

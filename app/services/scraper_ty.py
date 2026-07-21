@@ -16,7 +16,7 @@ class Trendyol:
             tarayici = None
             try:
                 tarayici = await p.chromium.launch(headless=True, slow_mo=500,
-                                                args=["--disable-blink-features=AutomationControlled"], proxy={"server": "https://95.3.69.222:8080"})
+                                                args=["--disable-blink-features=AutomationControlled"])
                 sekme = await Trendyol.tum_yorumlara_git(tarayici, url)
 
                 yorumlar = await Trendyol.yorumlari_al(sekme)
@@ -49,7 +49,6 @@ class Trendyol:
 
         await Scraper.asagi_kaydir(sekme=sekme)
 
-        await sekme.screenshot(path="ss.png", full_page=True)
         buton = sekme.locator('[data-testid="show-more-button"]').first
         await buton.wait_for(state="attached", timeout=50000)
         await buton.click(force=True)
