@@ -10,10 +10,12 @@ The application collects product reviews, calculates a sentiment score, identifi
 ## See How It Works
 
 Without caching:
-<img width="1280" height="583" alt="Demo Gif" src="https://github.com/user-attachments/assets/a98ef97f-f2d5-4b1d-832c-8226741d4fe8" />
+
+<img width="1280" height="500" alt="Demo Gif" src="https://github.com/user-attachments/assets/a98ef97f-f2d5-4b1d-832c-8226741d4fe8" />
 
 With caching:
-<img width="1280" height="585" alt="Demo Gif" src="https://github.com/user-attachments/assets/a539f16c-432d-4b0c-9acb-3bc7537aaeec" />
+
+<img width="1280" height="500" alt="Demo Gif" src="https://github.com/user-attachments/assets/a539f16c-432d-4b0c-9acb-3bc7537aaeec" />
 
 ## Features
 
