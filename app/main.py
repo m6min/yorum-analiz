@@ -62,3 +62,13 @@ async def rate_limit_yakalayici(request: Request, exc: Exception):
         status_code=429
     )
 app.add_exception_handler(RateLimitExceeded, rate_limit_yakalayici)
+
+@app.exception_handler(Exception)
+async def sunucu_hatalari(request: Request, exc: Exception):
+    """500 hataları"""
+    return templates.TemplateResponse(
+        request=request,
+        name="error.html",
+        context={"mesaj": "Sunucularla ilgili bir problem oluştu. Lütfen veritabanı bağlantılarınızı kontrol edin."},
+        status_code=500
+    )

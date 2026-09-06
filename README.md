@@ -7,7 +7,13 @@ The application collects product reviews, calculates a sentiment score, identifi
 > **Important Note on Deployment & Cloud Environments:**
 > This project is intentionally designed to be run in a local environment. Due to aggressive IP-based geolocation blocks and bot-protection mechanisms employed by major e-commerce platforms like Trendyol, running headless scraping automation (Playwright) on generic cloud instances (like Render or AWS Europe) results in forced geographic redirects or captchas. Therefore, a live cloud demo is not maintained. To experience the full capabilities of the application, please follow the Installation guide in the following to run it locally.
 
+## See How It Works
 
+Without caching:
+<img width="1280" height="583" alt="Demo Gif" src="https://github.com/user-attachments/assets/a98ef97f-f2d5-4b1d-832c-8226741d4fe8" />
+
+With caching:
+<img width="1280" height="585" alt="Demo Gif" src="https://github.com/user-attachments/assets/a539f16c-432d-4b0c-9acb-3bc7537aaeec" />
 
 ## Features
 

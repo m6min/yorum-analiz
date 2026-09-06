@@ -10,7 +10,6 @@ class Trendyol:
     @staticmethod
     async def main(url: str) -> list[dict]:
         """Trendyol sitesi için yorumları alan ve döndüren scraping main fonksiyonu.
-        Hatalar mock_model içinde exception ile yakalanmalı.
         """
         async with async_playwright() as p:
             tarayici = None
@@ -19,6 +18,7 @@ class Trendyol:
                                                 args=["--disable-blink-features=AutomationControlled"])
                 sekme = await Trendyol.tum_yorumlara_git(tarayici, url)
 
+                await Scraper.rastgele_bekle()
                 yorumlar = await Trendyol.yorumlari_al(sekme)
             except Exception as e:
                 raise ScrapeError(f"Yorumları alma başarısız oldu: {e}")
@@ -39,26 +39,34 @@ class Trendyol:
         # Belleği hızlandırmak için tracking ve resim engellemesi
         await sekme.route("**/*", Scraper.engelle)
         await sekme.goto(url, timeout=30000)
-        await Scraper.rastgele_bekle(0.2, 1.0)
+        await Scraper.rastgele_bekle(3.1, 4.3)
 
+        # POP-UP
         cookie_butonu = sekme.locator("div[aria-describedby*='onetrust-policy-text']")
-        await Scraper.rastgele_imlec_hareketi(sekme)
         if await cookie_butonu.is_visible(timeout=3000):
             await sekme.locator("button[id*='onetrust-reject-all-handler']").click()
-            await Scraper.rastgele_bekle()
+            await Scraper.rastgele_bekle(2.1, 4.0)
 
-        await Scraper.asagi_kaydir(sekme=sekme)
+        await Scraper.asagi_kaydir(sekme=sekme, bekleme=1.3)
+        await Scraper.asagi_kaydir(sekme=sekme, bekleme=1.3)
+        onay_butonu = sekme.get_by_text("Onayla", exact=True)
+        if await onay_butonu.count() > 0:
+            await onay_butonu.first.click()
+        buton = sekme.locator("a[data-testid='show-more-button']",has_text="TÜM YORUMLARI GÖSTER")
+        href = await buton.get_attribute("href")
 
-        buton = sekme.locator('[data-testid="show-more-button"]').first
-        await buton.wait_for(state="attached", timeout=50000)
-        await buton.click(force=True)
-        await Scraper.rastgele_bekle(0.3, 1.2)
+        await Scraper.rastgele_bekle(0.6, 1.2)
 
+        if href:
+            await sekme.goto(f"https://trendyol.com/{href}")
+        else:
+            raise ScrapeError
         return sekme
 
     @staticmethod
     async def yorumlari_al(sekme: Page) -> list[dict]:
         """Asıl yorum sayfasına geçtikten sonraki eylemleri kapsar"""
+        await Scraper.rastgele_bekle(1.4, 3)
         beklenecek_eleman = sekme.locator("div[class*='review-list']").first
         await beklenecek_eleman.wait_for(state="visible")
         await Scraper.rastgele_bekle(1.3, 2.5)

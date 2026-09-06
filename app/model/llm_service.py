@@ -21,7 +21,7 @@ def ozellikleri_getir(yorumlar_listesi: list[str]) -> dict:
     KESİN KURALLAR:
     1. Her iki liste de TAM OLARAK 3 elemanlı olacak. Ne eksik, ne fazla.
     2. Maddelerin yanına ASLA puan, olasılık, yüzde veya sayı (örn: 0.76) eklemeyeceksin. Saf metin olacak.
-    3. Maddeler "ürün dandik", "ürün güzel" gibi basit kelimeler yerine, profesyonel, net ve okunabilir bir dille ifade edilmeli.
+    3. Maddeler "ürün dandik", "ürün güzel" gibi basit kelimeler yerine, profesyonel, net ve okunabilir bir dille ifade edilmeli. Yazım yanlışları harf karışıklıkları omlmamalı.
     Örnek Doğru Çıktılar: "Yüksek malzeme kalitesi", "Hızlı kargolama", "Beden tablosu uyumsuzluğu", "Kötü paketleme".
     4. Sadece ve kesinlikle json formatında çıktı ver.
 
@@ -39,7 +39,7 @@ def ozellikleri_getir(yorumlar_listesi: list[str]) -> dict:
         # Llama 3 modeli
         cevap = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="openai/gpt-oss-20b",
+            model="openai/gpt-oss-120b",
             temperature=0.2,
             response_format={"type": "json_object"}
         )
